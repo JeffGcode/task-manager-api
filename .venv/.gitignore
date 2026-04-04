@@ -1,11 +1,40 @@
 # Created by venv; see https://docs.python.org/3/library/venv.html
-*venv/
+# Virtual environment
+venv/
 .venv/
+env/
+ENV/
+
+# Python cache
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+
+# Environment variables
 .env
+.env.local
+
+# Database (if using local SQLite)
+*.db
+*.sqlite
+*.sqlite3
+
+# Docker volumes (if any)
 postgres_data/
+
+# Alembic versions 
+alembic/versions/*.pyc
+
+# Test and coverage
 .pytest_cache/
 .coverage
 htmlcov/
-.DS_Store
+
+# IDE folders
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
