@@ -2,7 +2,7 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from fastapi.security import OAuth2PasswordRequestForm
 from datetime import timedelta
-from app import crud, schemas, auth
+from app import crud, schemas, auth, models   # <-- models added
 from app.database import get_db
 from app.config import settings
 
