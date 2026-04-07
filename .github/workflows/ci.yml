@@ -11,7 +11,7 @@ jobs:
         env:
           POSTGRES_USER: user
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: testdb
+          POSTGRES_DB: taskdb_test
         ports:
           - 5432:5432
         options: >-
@@ -19,7 +19,6 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
@@ -31,8 +30,8 @@ jobs:
           pip install -r requirements.txt
       - name: Run tests
         env:
-          DATABASE_URL: postgresql://user:password@localhost/testdb
-          SECRET_KEY: PSQLtestenvio#26
+          DATABASE_URL: postgresql://user:password@localhost/taskdb_test
+          SECRET_KEY: testsecret
           ALGORITHM: HS256
           ACCESS_TOKEN_EXPIRE_MINUTES: 30
         run: |
