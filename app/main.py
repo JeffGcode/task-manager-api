@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.openapi.utils import get_openapi
 from app.routers import users, tasks, categories
@@ -39,3 +40,11 @@ app.include_router(categories.router)
 @app.get("/")
 def root():
     return {"message": "Task Manager API"}
+
+# This block is used when running the script directly (e.g., with `python main.py`).
+# On Railway, the `uvicorn` command will be used instead, but this ensures the app
+# can also be started with a simple `python app/main.py` and will respect the PORT env var.
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run(app, host="0.0.0.0", port=port)
